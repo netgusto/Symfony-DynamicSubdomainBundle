@@ -1,0 +1,13 @@
+services:
+
+    # Service d'injection du client courant dans toutes les requêtes
+    netgusto_dynamic_subdomain.listener.request.clientinjecter:
+        class: Netgusto\DynamicSubdomainBundle\Services\ClientInjecterRequestListener
+        arguments:
+            entityManager: @doctrine.orm.entity_manager
+            base_host: %netgusto_dynamic_subdomain.base_host%
+            parameter_name: %netgusto_dynamic_subdomain.parameter_name%
+            entity: %netgusto_dynamic_subdomain.entity%
+            property: %netgusto_dynamic_subdomain.property%
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
