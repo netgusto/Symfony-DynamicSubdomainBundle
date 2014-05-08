@@ -32,15 +32,34 @@ netgusto_dynamic_subdomain:
     property: ~
 ```
 
-* `base_host`: The domain base host, where all subdomains are attached; **required**; example: `netgusto.com`
-* `parameter_name`: The name of the parameter that will be set on the current Request; **optional**; default value: `subdomain`
-* `entity`: The class or Doctrine alias of the entity mapped to subdomains; **required**; example: `Acme\DemoBundle\Entity\MySite`
-* `property`: The name of the property storing the subdomain name in your entity; **optional**; default value: `subdomain`
+* `base_host`:
+
+    * The domain base host, where all subdomains are attached
+    * **required**
+    * example: `netgusto.com`
+
+* `parameter_name`:
+
+    * The name of the parameter that will be set on the current `Request`
+    * **optional**
+    * default value: `subdomain`
+
+* `entity`:
+    
+    * The class or Doctrine alias of the entity mapped to subdomains
+    * **required**
+    * example: `Acme\DemoBundle\Entity\MySite`
+
+* `property`:
+    
+    * The name of the property storing the subdomain name in your entity
+    * **optional**
+    * default value: `subdomain`
 
 ## Use
 
 1. Create the entities mapped to your subdomains
-2. Access to the subdomain object through the Symfony `Request` object:
+2. Get the current subdomain object through the Symfony `Request` object
 
 In php, assuming that `netgusto_dynamic_subdomain.property` equals `subdomain` (the default value):
 
@@ -50,7 +69,7 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller {
 
     public function indexAction(Request $request) {
-        $subdomainobject  $request->request->get('subdomain');
+        $subdomainobject = $request->request->get('subdomain');
         var_dump($subdomainobject);
     }
 
@@ -65,4 +84,3 @@ In twig, assuming that `netgusto_dynamic_subdomain.property` equals `subdomain` 
 ## Notes
 
 If the subdomain is not found in the database, an exception will be thrown by the Bundle (`Symfony\Component\HttpKernel\Exception\NotFoundHttpException`).
-
