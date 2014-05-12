@@ -26,9 +26,9 @@ In app/config.yaml
 
 ```yaml
 netgusto_dynamic_subdomain:
-    base_host: gtexpert.dev
+    base_host: netgusto.com
     parameter_name: ~
-    entity: Netgusto\GTExpert\CoreBundle\Entity\Garage
+    entity: Acme\DemoBundle\Entity\MySite
     property: ~
 ```
 
