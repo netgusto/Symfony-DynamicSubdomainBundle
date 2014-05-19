@@ -50,7 +50,7 @@ class ClientInjecterRequestListener {
         }
 
         # On injecte l'objet sous-domaine identifié dans chaque requête faite à l'application
-        $event->getRequest()->request->set(
+        $event->getRequest()->attributes->set(
             $this->parameter_name,
             $subdomainobject
         );
