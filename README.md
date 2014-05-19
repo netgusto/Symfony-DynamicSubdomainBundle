@@ -69,7 +69,7 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller {
 
     public function indexAction(Request $request) {
-        $subdomainobject = $request->request->get('subdomain');
+        $subdomainobject = $request->attributes->get('subdomain');
         var_dump($subdomainobject);
     }
 
