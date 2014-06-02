@@ -78,7 +78,7 @@ class DefaultController extends Controller {
 In twig, assuming that `netgusto_dynamic_subdomain.property` equals `subdomain` (the default value), and that the entity mapped to subdomains has a `title` property:
 
 ```twig
-{{ app.request.get('subdomain').title }}
+{{ app.request.attributes.get('subdomain').title }}
 ```
 
 ## Notes
