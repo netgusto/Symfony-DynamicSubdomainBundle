@@ -4,10 +4,11 @@ namespace Netgusto\DynamicSubdomainBundle\Services;
 
 use Symfony\Component\HttpKernel\HttpKernel,
     Symfony\Component\HttpKernel\HttpKernelInterface,
-    Symfony\Component\HttpKernel\Event\GetResponseEvent,
-    Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+    Symfony\Component\HttpKernel\Event\GetResponseEvent;
 
 use Doctrine\ORM\EntityManager;
+
+use Netgusto\DynamicSubdomainBundle\Exception\DomainNotFoundException;
 
 class ClientInjecterRequestListener {
 
@@ -42,7 +43,7 @@ class ClientInjecterRequestListener {
         ));
 
         if(!$subdomainobject) {
-            throw new NotFoundHttpException(sprintf(
+            throw new DomainNotFoundException(sprintf(
                 'No subdomain mapped for host "%s", subdomain "%s"',
                 $host,
                 $subdomain
