@@ -8,6 +8,7 @@ services:
             base_host: %netgusto_dynamic_subdomain.base_host%
             parameter_name: %netgusto_dynamic_subdomain.parameter_name%
             entity: %netgusto_dynamic_subdomain.entity%
+            method: %netgusto_dynamic_subdomain.method%
             property: %netgusto_dynamic_subdomain.property%
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
