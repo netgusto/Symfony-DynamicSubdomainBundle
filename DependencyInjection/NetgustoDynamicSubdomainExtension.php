@@ -25,6 +25,7 @@ class NetgustoDynamicSubdomainExtension extends Extension
         $container->setParameter('netgusto_dynamic_subdomain.base_host', $config['base_host']);
         $container->setParameter('netgusto_dynamic_subdomain.parameter_name', $config['parameter_name']);
         $container->setParameter('netgusto_dynamic_subdomain.entity', $config['entity']);
+        $container->setParameter('netgusto_dynamic_subdomain.method', $config['method']);
         $container->setParameter('netgusto_dynamic_subdomain.property', $config['property']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));

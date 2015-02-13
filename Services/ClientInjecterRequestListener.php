@@ -16,13 +16,15 @@ class ClientInjecterRequestListener {
     private $base_host;
     private $parameter_name;
     private $entity;
+    private $method;
     private $property;
 
-    public function __construct(EntityManager $entityManager, $base_host, $parameter_name, $entity, $property) {
+    public function __construct(EntityManager $entityManager, $base_host, $parameter_name, $entity, $method, $property) {
         $this->entityManager = $entityManager;
         $this->base_host = $base_host;
         $this->parameter_name = $parameter_name;
-        $this->entity = $entity;
+        $this->entity= $entity;
+        $this->method = $method;
         $this->property = $property;
     }
 
@@ -38,9 +40,15 @@ class ClientInjecterRequestListener {
 
         $host = $request->getHost();
         $subdomain = substr($host, 0, ((strlen($this->base_host) + 1) * -1));
-        $subdomainobject = $this->entityManager->getRepository($this->entity)->findOneBy(array(
-            $this->property => $subdomain
-        ));
+
+        if ('findOneBy' === $this->method) {
+            $subdomainobject = $this->entityManager->getRepository($this->entity)->findOneBy(array(
+                $this->property => $subdomain
+            ));
+        } else {
+            $subdomainobject = $this->entityManager->getRepository($this->entity)->{$this->method}($subdomain);
+        }
+
 
         if(!$subdomainobject) {
             throw new DomainNotFoundException(sprintf(
