@@ -56,6 +56,12 @@ netgusto_dynamic_subdomain:
     * **optional**
     * default value: `subdomain`
 
+* `method`:
+
+    * The name of methof that will be called to get object with the property defined
+    * **optional**
+    * default value: `findOneBy`
+
 ## Use
 
 1. Create the entities mapped to your subdomains
