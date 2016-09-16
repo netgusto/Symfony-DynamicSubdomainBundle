@@ -58,7 +58,7 @@ netgusto_dynamic_subdomain:
 
 * `method`:
 
-    * The name of methof that will be called to get object with the property defined
+    * The name of method that will be called to get object with the property defined
     * **optional**
     * default value: `findOneBy`
 

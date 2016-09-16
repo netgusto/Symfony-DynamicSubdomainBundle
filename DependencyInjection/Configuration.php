@@ -38,7 +38,7 @@ class Configuration implements ConfigurationInterface
                     ->example('Acme\DemoBundle\Entity\MySite')
                 ->end()
                 ->scalarNode('method')
-                    ->info('The name of methof that will be called to get object with the property defined')
+                    ->info('The name of method that will be called to get object with the property defined')
                     ->treatNullLike('findOneBy')
                     ->defaultValue('findOneBy')
                 ->end()
